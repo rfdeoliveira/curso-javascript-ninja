@@ -16,11 +16,7 @@
     nome, `username` deve receber "Desconhecido".
     Com a resposta, mostre um alert com a mensagem "Bem vindo [USERNAME]!"
     */
-    var username = prompt( 'Qual o seu nome?' );
-
-    if (!username)
-        username = 'Desconhecido';
-
+    var username = prompt( 'Qual o seu nome?' ) || 'Desconhecido';
     alert( 'Bem-vindo, ' + username );
 
     /*
@@ -99,10 +95,10 @@
             'a mensagem': $message,
         };
 
-        for (var field in formFields) {
-            if (! formFields[field].value) {
+        for (var fieldName in formFields) {
+            if (! formFields[fieldName].value) {
                 formHasErrors = true;
-                alert('Preencha ' + field + '!');
+                alert('Preencha ' + fieldName + '!');
             }
         }
 
@@ -152,7 +148,6 @@
     */
 
     function isValidEmail(email) {
-        var regex = new RegExp('^[\\w\\+\\.]+@\\w+\\.\\w{2,}(?:\\.\\w{2})?$');
-        return regex.test(email);
+        return /^[\w+.]+@\w+\.\w{2,}(?:\.\w{2})?$/.test(email);
     }
 })(window, document);
